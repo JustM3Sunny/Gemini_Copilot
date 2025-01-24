@@ -1,0 +1,132 @@
+{
+  "name": "vscode-gemini-copilot",
+  "displayName": "Gemini Copilot",
+  "description": "AI-powered coding assistant using Google's Gemini models",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Machine Learning",
+    "Snippets",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "gemini-copilot.toggleInlineSuggestions",
+        "title": "Toggle Inline Suggestions",
+        "category": "Gemini Copilot"
+      },
+      {
+        "command": "gemini-copilot.generateCode",
+        "title": "Generate Code",
+        "category": "Gemini Copilot"
+      },
+      {
+        "command": "gemini-copilot.toggleChatPanel",
+        "title": "Toggle Chat Panel",
+        "category": "Gemini Copilot"
+      },
+      {
+        "command": "gemini-copilot.refactorCode",
+        "title": "Refactor Selected Code",
+        "category": "Gemini Copilot"
+      },
+      {
+        "command": "gemini-copilot.generateDocs",
+        "title": "Generate Documentation",
+        "category": "Gemini Copilot"
+      },
+      {
+        "command": "gemini-copilot.generateTests",
+        "title": "Generate Test Cases",
+        "category": "Gemini Copilot"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "gemini-copilot.toggleInlineSuggestions",
+        "key": "ctrl+k",
+        "mac": "cmd+k"
+      },
+      {
+        "command": "gemini-copilot.toggleChatPanel",
+        "key": "ctrl+l",
+        "mac": "cmd+l"
+      }
+    ],
+    "configuration": {
+      "title": "Gemini Copilot",
+      "properties": {
+        "gemini-copilot.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Google Cloud API Key for Gemini"
+        },
+        "gemini-copilot.theme": {
+          "type": "string",
+          "enum": [
+            "light",
+            "dark",
+            "system"
+          ],
+          "default": "system",
+          "description": "Theme for the chat panel"
+        },
+        "gemini-copilot.inlineSuggestionsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable inline code suggestions"
+        },
+        "gemini-copilot.customPrompts": {
+          "type": "object",
+          "default": {},
+          "description": "Custom prompts for specific tasks"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "20.x",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@types/vscode": "^1.85.0",
+    "@types/vscode-webview": "^1.57.4",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.56.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.1.3"
+  }
+}

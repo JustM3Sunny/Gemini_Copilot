@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2020",
+    "outDir": "dist",
+    "lib": ["ES2020", "dom"],
+    "sourceMap": true,
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx" // Add this for JSX support
+  },
+  "include": ["src", "vite.config.ts"], // Ensure vite.config.ts is included
+  "exclude": ["node_modules", ".vscode-test"]
+}
